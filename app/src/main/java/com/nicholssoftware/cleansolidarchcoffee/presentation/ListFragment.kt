@@ -54,7 +54,7 @@ class ListFragment : Fragment(), ListAction {
     }
 
     private fun goToNoteDetails(id: Long = 0L){
-        val action = ListFragmentDirections.actionListFragmentToNoteFragment()
+        val action = ListFragmentDirections.actionListFragmentToNoteFragment(id)
         Navigation.findNavController(binding.noteListView).navigate(action)
     }
 

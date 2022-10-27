@@ -1,5 +1,6 @@
 package com.nicholssoftware.cleansolidarchcoffee.presentation
 
+import android.app.AlertDialog
 import android.content.Context.INPUT_METHOD_SERVICE
 import android.os.Bundle
 import android.view.*
@@ -10,6 +11,7 @@ import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
+import com.nicholssoftware.cleansolidarchcoffee.R
 import com.nicholssoftware.cleansolidarchcoffee.databinding.FragmentNoteBinding
 import com.nicholssoftware.cleansolidarchcoffee.framework.NoteViewModel
 import com.nicholssoftware.core.data.Note
@@ -29,6 +31,10 @@ class NoteFragment : Fragment() {
     }
     private var currentNote = Note("","",0L,0L)
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
+    }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -91,5 +97,30 @@ class NoteFragment : Fragment() {
     private fun hideKeyboard(){
         val imm = context?.getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
         imm.hideSoftInputFromWindow(binding.etTitle.windowToken, 0)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.note_menu,menu)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId){
+            R.id.deleteNote -> {
+                if(context != null && noteId != 0L){
+                    AlertDialog.Builder(requireContext())
+                        .setTitle("Delete note")
+                        .setMessage("Are you sure?")
+
+                        .setPositiveButton("Yes") {dialogInterface, i ->
+                            viewModel.deleteNote(currentNote)
+                        }
+                        .setNegativeButton("Cancel"){dialogInterface, i -> }
+                        .create()
+                        .show()
+                }
+            }
+        }
+        return true
     }
 }
