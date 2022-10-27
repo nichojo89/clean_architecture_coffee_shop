@@ -8,7 +8,7 @@
 
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/notesListView"
+        android:id="@+id/noteListView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="1dp"
@@ -26,12 +26,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="100dp"
-        app:layout_constraintBottom_toTopOf="@+id/floatingActionButton"
+        app:layout_constraintBottom_toTopOf="@+id/fabAddNote"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButton"
+        android:id="@+id/fabAddNote"
         android:text="Create"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
