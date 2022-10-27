@@ -20,6 +20,7 @@ import com.nicholssoftware.core.data.Note
  * create an instance of this fragment.
  */
 class NoteFragment : Fragment() {
+    private var noteId = 0L
     private var _binding: FragmentNoteBinding? = null
     private val binding get() = _binding!!
 
@@ -38,6 +39,13 @@ class NoteFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        arguments?.let {
+            noteId = NoteFragmentArgs.fromBundle(it).noteid
+            if(noteId != 0L){
+                //present note from cache
+                viewModel.getNote(noteId)
+            }
+        }
         //fab goes back
         binding.fabCheck.setOnClickListener {
             if(binding.etTitle.text.toString() != ""
@@ -65,6 +73,14 @@ class NoteFragment : Fragment() {
                 Navigation.findNavController(binding.etTitle).popBackStack()
             } else {
                 Toast.makeText(context, "Something went wrong, please try again", Toast.LENGTH_SHORT).show()
+            }
+        })
+
+        viewModel.currentNote.observe(viewLifecycleOwner, Observer { note ->
+            note?.let {
+                currentNote = it
+                binding.etTitle.setText(it.title, TextView.BufferType.EDITABLE)
+                binding.etContent.setText(it.content, TextView.BufferType.EDITABLE)
             }
         })
     }

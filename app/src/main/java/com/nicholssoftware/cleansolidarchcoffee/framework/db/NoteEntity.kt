@@ -17,7 +17,7 @@ data class NoteEntity(val title: String,
                       @PrimaryKey(autoGenerate = true)
                       val id: Long = 0){
     companion object {
-        fun fromNote(note: Note) = NoteEntity(note.title, note.content, note.creationTime, note.updateTime)
+        fun fromNote(note: Note) = NoteEntity(note.title, note.content, note.creationTime, note.updateTime, note.id)
     }
     fun toNote() = Note(title,content,creationTime,updateTime,id)
 }
