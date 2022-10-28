@@ -46,11 +46,12 @@ class NoteFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         arguments?.let {
-            noteId = NoteFragmentArgs.fromBundle(it).noteid
-            if(noteId != 0L){
-                //present note from cache
-                viewModel.getNote(noteId)
-            }
+            //TODO
+//            noteId = NoteFragmentArgs.fromBundle(it).noteid
+//            if(noteId != 0L){
+//                //present note from cache
+//                viewModel.getNote(noteId)
+//            }
         }
         //fab goes back
         binding.fabCheck.setOnClickListener {

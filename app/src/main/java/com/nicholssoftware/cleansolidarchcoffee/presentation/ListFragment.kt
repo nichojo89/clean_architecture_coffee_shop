@@ -19,8 +19,8 @@ class ListFragment : Fragment(), ListAction {
         ViewModelProvider(this).get(NoteListViewModel::class.java)
     }
 
-    private var _binding: FragmentListBinding? = null
-    private val binding get() = _binding!!
+    private lateinit var _binding: FragmentListBinding
+    private val binding get() = _binding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -54,8 +54,9 @@ class ListFragment : Fragment(), ListAction {
     }
 
     private fun goToNoteDetails(id: Long = 0L){
-        val action = ListFragmentDirections.actionListFragmentToNoteFragment(id)
-        Navigation.findNavController(binding.noteListView).navigate(action)
+        //TODO
+//        val action = ListFragmentDirections.actionListFragmentToNoteFragment(id)
+//        Navigation.findNavController(binding.noteListView).navigate(action)
     }
 
     override fun onClick(id: Long) {

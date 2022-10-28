@@ -3,25 +3,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
-    app:startDestination="@id/listFragment">
-
+    app:startDestination="@id/home">
     <fragment
-        android:id="@+id/listFragment"
-        android:name="com.nicholssoftware.cleansolidarchcoffee.presentation.ListFragment"
-        android:label="fragment_list"
-        tools:layout="@layout/fragment_list" >
-        <action
-            android:id="@+id/action_listFragment_to_noteFragment"
-            app:destination="@id/noteFragment" />
-    </fragment>
+        android:id="@+id/home"
+        android:name="com.nicholssoftware.cleansolidarchcoffee.presentation.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" />
     <fragment
-        android:id="@+id/noteFragment"
-        android:name="com.nicholssoftware.cleansolidarchcoffee.presentation.NoteFragment"
-        android:label="fragment_note"
-        tools:layout="@layout/fragment_note" >
-        <argument
-            android:name="noteid"
-            app:argType="long"
-            android:defaultValue="0L" />
-    </fragment>
+        android:id="@+id/checkout"
+        android:name="com.nicholssoftware.cleansolidarchcoffee.CartFragment"
+        android:label="fragment_cart"
+        tools:layout="@layout/fragment_cart" />
+    <fragment
+        android:id="@+id/about"
+        android:name="com.nicholssoftware.cleansolidarchcoffee.presentation.AboutFragment"
+        android:label="fragment_about"
+        tools:layout="@layout/fragment_about" />
 </navigation>
