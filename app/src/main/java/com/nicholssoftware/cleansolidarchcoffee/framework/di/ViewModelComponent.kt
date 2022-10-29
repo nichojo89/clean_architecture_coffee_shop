@@ -1,5 +1,6 @@
 package com.nicholssoftware.cleansolidarchcoffee.framework.di
 
+import com.nicholssoftware.cleansolidarchcoffee.framework.HomeViewModel
 import com.nicholssoftware.cleansolidarchcoffee.framework.NoteListViewModel
 import com.nicholssoftware.cleansolidarchcoffee.framework.NoteViewModel
 import dagger.Component
@@ -8,4 +9,5 @@ import dagger.Component
 interface ViewModelComponent {
     fun inject(noteViewModel: NoteViewModel)
     fun inject(listViewModel: NoteListViewModel)
+    fun inject(drinkViewModel: HomeViewModel)
 }

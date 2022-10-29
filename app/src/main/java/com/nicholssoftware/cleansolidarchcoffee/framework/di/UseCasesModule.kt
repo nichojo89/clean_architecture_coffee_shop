@@ -1,6 +1,7 @@
 package com.nicholssoftware.cleansolidarchcoffee.framework.di
 
 import com.nicholssoftware.cleansolidarchcoffee.framework.UseCases
+import com.nicholssoftware.core.repository.DrinkRepository
 import com.nicholssoftware.core.repository.NoteRepository
 import com.nicholssoftware.core.usecase.*
 import dagger.Module
@@ -10,12 +11,16 @@ import dagger.Provides
 class UseCasesModule {
 
     @Provides
-    fun getUseCases(repository: NoteRepository) =
+    fun getUseCases(noteRepository: NoteRepository, drinkRepository: DrinkRepository) =
         UseCases(
-            AddNote(repository),
-            GetAllNotes(repository),
-            GetNote(repository),
-            RemoveNote(repository),
-            GetWordCount()
+            AddNote(noteRepository),
+            GetAllNotes(noteRepository),
+            GetNote(noteRepository),
+            RemoveNote(noteRepository),
+            GetWordCount(),
+            AddDrink(drinkRepository),
+            RemoveDrink(drinkRepository),
+            GetAllDrinks(drinkRepository),
+            GetDrink(drinkRepository)
         )
 }

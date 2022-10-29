@@ -8,4 +8,6 @@
     <string name="home">Home</string>
     <string name="checkout">Checkout</string>
     <string name="about">About</string>
+    <string name="this_seasons_specialty_is_pumpkin_spice">This seasons specialty is pumpkin spice</string>
+    <string name="this_seasons_special_is_pumpkin_spice">This seasons’ special is pumpkin spice!</string>
 </resources>

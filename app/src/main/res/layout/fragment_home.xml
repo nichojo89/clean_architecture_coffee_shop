@@ -1,14 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".presentation.HomeFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ImageView
+        android:id="@+id/iv_logo"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Home" />
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_logo"
+        app:srcCompat="@drawable/ic_logo"
+        tools:srcCompat="@drawable/ic_logo" />
 
-</FrameLayout>
+    <ImageView
+        android:id="@+id/ic_seasonal"
+        android:adjustViewBounds="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/this_seasons_specialty_is_pumpkin_spice"
+        android:scaleType="fitCenter"
+        android:src="@drawable/seasonal_banner" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:text="@string/this_seasons_special_is_pumpkin_spice" />
+
+    <GridView
+        android:id="@+id/gv_coffee_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:horizontalSpacing="6dp"
+        android:verticalSpacing="6dp"
+        android:numColumns="2"/>
+
+</androidx.appcompat.widget.LinearLayoutCompat>
