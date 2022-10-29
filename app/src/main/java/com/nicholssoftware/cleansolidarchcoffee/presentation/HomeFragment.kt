@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import com.nicholssoftware.cleansolidarchcoffee.R
 import com.nicholssoftware.cleansolidarchcoffee.databinding.FragmentHomeBinding
 import com.nicholssoftware.cleansolidarchcoffee.framework.HomeViewModel
@@ -43,6 +44,13 @@ class HomeFragment : Fragment(), ListAction {
     ): View? {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
 
+        binding.ivSeasonal.setOnClickListener {
+            //TODO Seasonal drink should be added to drink list,
+            //TODO Add promotion boolean to indicate it shows as seasonal drink
+            val tempSeasonalId = 123L
+            
+            goToDrinkDetails(tempSeasonalId)
+        }
         return binding.root
     }
 
@@ -57,11 +65,15 @@ class HomeFragment : Fragment(), ListAction {
     }
 
     /**
-     * TODO Go to drink details
+     * Go to drink details when selecting from menu
      */
-    override fun onClick(id: Long) {
-        val f = 0
+    override fun onClick(id: Long) = goToDrinkDetails(id)
+
+    /**
+     * Navigates to drink details fragment
+     */
+    private fun goToDrinkDetails(id: Long){
+        val action = HomeFragmentDirections.actionHomeToDrinkInfoFragment(id)
+        Navigation.findNavController(binding.root).navigate(action)
     }
-
 }
-
