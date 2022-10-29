@@ -12,12 +12,14 @@ data class DrinkEntity(var title: String,
                        @ColumnInfo(name = "content_description")
                        var contentDescription: String,
 
+                       var imageResource: Int,
+
                        @PrimaryKey(autoGenerate = true)
                        var id: Long = 0L) {
 
     companion object {
-        fun fromDrink(drink: Drink) = DrinkEntity(drink.title, drink.description,drink.contentDescription,drink.id)
+        fun fromDrink(drink: Drink) = DrinkEntity(drink.title, drink.description,drink.contentDescription,drink.imageResource,drink.id)
     }
 
-    fun toDrink() = Drink(title,description,contentDescription,id)
+    fun toDrink() = Drink(title,description,contentDescription, imageResource, id)
 }

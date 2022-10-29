@@ -23,15 +23,15 @@ class DrinksListAdapter(context: Context, courseModelArrayList: ArrayList<DrinkE
             val drinkTitle = listitemView.findViewById<TextView>(R.id.tv_drink_title)
             val drinkImage = listitemView.findViewById<ImageView>(R.id.iv_drink)
 
-            val coffee: DrinkEntity? = getItem(position)
+            val drink: DrinkEntity? = getItem(position)
 
-            coffee?.let {
-                drinkTitle.setText(coffee.title)
-                drinkImage.setImageResource(R.drawable.seasonal_banner)
+            drink?.let {
+                drinkTitle.setText(drink.title)
+                drinkImage.setImageResource(drink.imageResource)
 
-                val coffeeCard = listitemView.findViewById<MaterialCardView>(R.id.drinkLayout)
-                coffeeCard.setOnClickListener {
-                    actions.onClick(coffee.id)
+                val drinkCard = listitemView.findViewById<MaterialCardView>(R.id.drinkLayout)
+                drinkCard.setOnClickListener {
+                    actions.onClick(drink.id)
                 }
             }
         }
