@@ -23,11 +23,10 @@ class HomeViewModel(application: Application): AndroidViewModel(application){
             .applicationModule(ApplicationModule(getApplication()))
             .build()
             .inject(this)
-
-        getDrinkOptions()
     }
 
-    private fun getDrinkOptions(){
+
+    fun getDrinkOptions(){
         coroutineScope.launch {
             val d = useCases.getAllDrinks()
             drinks.postValue(d)

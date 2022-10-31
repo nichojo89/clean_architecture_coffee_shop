@@ -2,8 +2,8 @@ package com.nicholssoftware.cleansolidarchcoffee.framework
 
 import com.nicholssoftware.core.usecase.*
 
-data class UseCases(
 
+data class  UseCases(
     val addNote: AddNote,
     val getAllNotes: GetAllNotes,
     val getNote: GetNote,

@@ -9,10 +9,10 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.google.android.material.card.MaterialCardView
 import com.nicholssoftware.cleansolidarchcoffee.R
-import com.nicholssoftware.cleansolidarchcoffee.framework.db.DrinkEntity
+import com.nicholssoftware.core.data.Drink
 
-class DrinksListAdapter(context: Context, courseModelArrayList: ArrayList<DrinkEntity?>, val actions: ListAction) :
-    ArrayAdapter<DrinkEntity?>(context, 0, courseModelArrayList) {
+class DrinksListAdapter(context: Context,var drinks: ArrayList<Drink?>, val actions: ListAction) :
+    ArrayAdapter<Drink?>(context, 0, drinks) {
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
 
@@ -23,7 +23,7 @@ class DrinksListAdapter(context: Context, courseModelArrayList: ArrayList<DrinkE
             val drinkTitle = listitemView.findViewById<TextView>(R.id.tv_drink_title)
             val drinkImage = listitemView.findViewById<ImageView>(R.id.iv_drink)
 
-            val drink: DrinkEntity? = getItem(position)
+            val drink: Drink? = getItem(position)
 
             drink?.let {
                 drinkTitle.setText(drink.title)
@@ -37,5 +37,11 @@ class DrinksListAdapter(context: Context, courseModelArrayList: ArrayList<DrinkE
         }
 
         return listitemView!!
+    }
+
+    fun updateDrinks(drinkies: List<Drink>){
+        drinks.clear()
+        drinks.addAll(drinkies)
+        notifyDataSetChanged()
     }
 }
